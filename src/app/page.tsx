@@ -427,21 +427,164 @@ export default function Home() {
 
       {/* Hero Section with animated background */}
       <section className="py-12 md:py-20 px-4 relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute top-20 -left-40 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-5xl mx-auto">
-            <div className="absolute top-10 right-10 w-24 h-24 bg-blue-400/10 rounded-full animate-pulse blur-2xl"></div>
-            <div className="absolute bottom-40 left-20 w-20 h-20 bg-indigo-600/10 rounded-full animate-pulse blur-2xl" style={{ animationDelay: '1s' }}></div>
-            <svg className="absolute top-0 left-0 w-full h-full opacity-[0.03] text-primary" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="currentColor" strokeWidth="0.5"></path>
-              <path d="M0,0 L100,100 M100,0 L0,100" stroke="currentColor" strokeWidth="0.5"></path>
-              <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="0.5"></circle>
+        {/* Financial network background */}
+        <div className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-r from-indigo-50/40 to-blue-50/40">
+          {/* Bank network visualization */}
+          <div className="absolute inset-0 w-full h-full">
+            {/* Barclays Node */}
+            <div className="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-10">
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white font-bold shadow-lg" 
+                  style={{ backgroundColor: '#00AEEF' }}>
+                  <span className="text-lg md:text-xl">B</span>
+                </div>
+                <span className="text-xs mt-1 font-medium text-gray-600">Barclays</span>
+              </div>
+            </div>
+            
+            {/* NatWest Node */}
+            <div className="absolute top-1/3 right-1/4 transform translate-x-1/2 -translate-y-1/2 z-10">
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white font-bold shadow-lg" 
+                  style={{ backgroundColor: '#4E2A84' }}>
+                  <span className="text-lg md:text-xl">N</span>
+                </div>
+                <span className="text-xs mt-1 font-medium text-gray-600">NatWest</span>
+              </div>
+            </div>
+            
+            {/* Lloyds Node */}
+            <div className="absolute bottom-1/4 left-1/3 transform -translate-x-1/2 translate-y-1/2 z-10">
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white font-bold shadow-lg" 
+                  style={{ backgroundColor: '#006A4D' }}>
+                  <span className="text-lg md:text-xl">L</span>
+                </div>
+                <span className="text-xs mt-1 font-medium text-gray-600">Lloyds</span>
+              </div>
+            </div>
+            
+            {/* HSBC Node */}
+            <div className="absolute bottom-1/3 right-1/5 transform translate-x-1/2 translate-y-1/2 z-10">
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white font-bold shadow-lg" 
+                  style={{ backgroundColor: '#DB0011' }}>
+                  <span className="text-lg md:text-xl">H</span>
+                </div>
+                <span className="text-xs mt-1 font-medium text-gray-600">HSBC</span>
+              </div>
+            </div>
+
+            {/* Connection lines */}
+            <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.4 }}>
+              {/* Barclays to NatWest */}
+              <line 
+                x1="25%" y1="25%" 
+                x2="75%" y2="33%" 
+                stroke="url(#gradient-line)" 
+                strokeWidth="1.5"
+                strokeDasharray="5,5"
+                className="animate-pulse"
+              />
+              
+              {/* NatWest to HSBC */}
+              <line 
+                x1="75%" y1="33%" 
+                x2="80%" y2="67%" 
+                stroke="url(#gradient-line)" 
+                strokeWidth="1.5"
+                strokeDasharray="5,5"
+                className="animate-pulse"
+              />
+              
+              {/* HSBC to Lloyds */}
+              <line 
+                x1="80%" y1="67%" 
+                x2="33%" y2="75%" 
+                stroke="url(#gradient-line)" 
+                strokeWidth="1.5"
+                strokeDasharray="5,5"
+                className="animate-pulse"
+              />
+              
+              {/* Lloyds to Barclays */}
+              <line 
+                x1="33%" y1="75%" 
+                x2="25%" y2="25%" 
+                stroke="url(#gradient-line)" 
+                strokeWidth="1.5"
+                strokeDasharray="5,5"
+                className="animate-pulse"
+              />
+              
+              {/* Barclays to HSBC */}
+              <line 
+                x1="25%" y1="25%" 
+                x2="80%" y2="67%" 
+                stroke="url(#gradient-line)" 
+                strokeWidth="1.5"
+                strokeDasharray="5,5"
+                className="animate-pulse"
+              />
+              
+              {/* NatWest to Lloyds */}
+              <line 
+                x1="75%" y1="33%" 
+                x2="33%" y2="75%" 
+                stroke="url(#gradient-line)" 
+                strokeWidth="1.5"
+                strokeDasharray="5,5"
+                className="animate-pulse"
+              />
+              
+              {/* Gradients */}
+              <defs>
+                <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#6366F1" />
+                  <stop offset="100%" stopColor="#8B5CF6" />
+                </linearGradient>
+              </defs>
             </svg>
+            
+            {/* Animated money particles */}
+            <div className="absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-green-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '3s', animationDelay: '0.2s' }}></div>
+            <div className="absolute top-1/3 right-1/4 w-3 h-3 rounded-full bg-blue-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '4s', animationDelay: '1.5s' }}></div>
+            <div className="absolute bottom-1/3 right-1/5 w-3 h-3 rounded-full bg-indigo-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '3.5s', animationDelay: '0.7s' }}></div>
+            <div className="absolute bottom-1/4 left-1/3 w-3 h-3 rounded-full bg-purple-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '5s', animationDelay: '2s' }}></div>
+
+            {/* Node for Syntropi (central node) */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <div className="flex flex-col items-center">
+                <div className="w-14 h-14 md:w-20 md:h-20 rounded-full shadow-xl flex items-center justify-center text-white font-bold z-30"
+                  style={{ 
+                    background: 'linear-gradient(90deg, #6366F1, #8B5CF6)',
+                    animation: 'pulse 2s infinite'
+                  }}>
+                  <span className="text-xl md:text-2xl">S</span>
+                </div>
+                <span className="text-sm mt-1 font-medium text-gray-700">Syntropi</span>
+              </div>
+            </div>
+
+            {/* Data bits floating around */}
+            <div className="hidden md:block">
+              {[...Array(15)].map((_, i) => (
+                <div 
+                  key={i}
+                  className="absolute w-1 h-1 bg-indigo-500 rounded-full opacity-30"
+                  style={{ 
+                    top: `${Math.random() * 100}%`, 
+                    left: `${Math.random() * 100}%`,
+                    animation: `float ${3 + Math.random() * 7}s linear infinite`,
+                    animationDelay: `${Math.random() * 5}s`
+                  }}
+                ></div>
+              ))}
+            </div>
           </div>
         </div>
 
+        {/* Content remains the same */}
         <div className="container mx-auto relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fadeIn">
