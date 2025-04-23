@@ -427,10 +427,32 @@ export default function Home() {
 
       {/* Hero Section with animated background */}
       <section className="py-12 md:py-20 px-4 relative overflow-hidden">
-        <div className="container mx-auto">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute top-20 -left-40 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-5xl mx-auto">
+            <div className="absolute top-10 right-10 w-24 h-24 bg-blue-400/10 rounded-full animate-pulse blur-2xl"></div>
+            <div className="absolute bottom-40 left-20 w-20 h-20 bg-indigo-600/10 rounded-full animate-pulse blur-2xl" style={{ animationDelay: '1s' }}></div>
+            <svg className="absolute top-0 left-0 w-full h-full opacity-[0.03] text-primary" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="currentColor" strokeWidth="0.5"></path>
+              <path d="M0,0 L100,100 M100,0 L0,100" stroke="currentColor" strokeWidth="0.5"></path>
+              <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="0.5"></circle>
+            </svg>
+          </div>
+        </div>
+
+        <div className="container mx-auto relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Real-Time Payment Network
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fadeIn">
+              <span style={{ 
+                background: 'linear-gradient(90deg, #6366F1, #8B5CF6)', 
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                display: 'inline-block'
+              }}>
+                Real-Time Payment Network
+              </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-8">
               Unlocking the future of payments
@@ -438,14 +460,14 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a 
                 href="#contact" 
-                className="px-6 py-3 text-white rounded-full hover:shadow-lg transition-colors w-full sm:w-auto text-center"
+                className="px-6 py-3 text-white rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto text-center"
                 style={{ background: 'linear-gradient(90deg, #6366F1, #8B5CF6)' }}
               >
                 Contact Sales
               </a>
               <a
                 href="#features" 
-                className="px-6 py-3 border border-gray-300 rounded-full hover:border-primary hover:bg-primary/5 transition-colors w-full sm:w-auto text-center"
+                className="px-6 py-3 border border-gray-300 rounded-full hover:border-primary hover:bg-primary/5 hover:scale-105 transition-all duration-300 w-full sm:w-auto text-center"
               >
                 Learn More
               </a>
@@ -455,13 +477,13 @@ export default function Home() {
 
         {/* Connected status indicator */}
         <div className="absolute bottom-6 right-6 sm:right-12 flex items-center bg-white shadow-md rounded-full py-2 px-4 animate-fadeIn">
-          <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+          <div className="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></div>
           <span className="text-blue-600 font-medium">Connected</span>
         </div>
 
         {/* Payment flow demo */}
         <div className="mt-16 md:mt-20 max-w-sm mx-auto relative">
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200">
+          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-all duration-500">
             <div className="p-5">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold">Payment Progress</h3>
