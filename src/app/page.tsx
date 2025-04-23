@@ -431,106 +431,170 @@ export default function Home() {
         <div className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-r from-indigo-50/40 to-blue-50/40">
           {/* Bank network visualization */}
           <div className="absolute inset-0 w-full h-full">
+            {/* Banks positioned in a circle around Syntropi */}
+            
             {/* Barclays Node */}
-            <div className="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-10">
+            <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -translate-x-[12rem] z-10">
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white font-bold shadow-lg" 
-                  style={{ backgroundColor: '#00AEEF' }}>
-                  <span className="text-lg md:text-xl">B</span>
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
+                  <Image 
+                    src="/banks/barclays.svg" 
+                    alt="Barclays" 
+                    width={50} 
+                    height={50}
+                    onError={(e) => {
+                      // Fallback if image not found
+                      const target = e.target as HTMLElement;
+                      if (target.parentElement) {
+                        target.parentElement.style.backgroundColor = '#00AEEF';
+                        target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">B</span>';
+                      }
+                    }}
+                  />
                 </div>
                 <span className="text-xs mt-1 font-medium text-gray-600">Barclays</span>
               </div>
             </div>
             
             {/* NatWest Node */}
-            <div className="absolute top-1/3 right-1/4 transform translate-x-1/2 -translate-y-1/2 z-10">
+            <div className="absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-10">
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white font-bold shadow-lg" 
-                  style={{ backgroundColor: '#4E2A84' }}>
-                  <span className="text-lg md:text-xl">N</span>
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
+                  <Image 
+                    src="/banks/natwest.svg" 
+                    alt="NatWest" 
+                    width={50} 
+                    height={50}
+                    onError={(e) => {
+                      // Fallback if image not found
+                      const target = e.target as HTMLElement;
+                      if (target.parentElement) {
+                        target.parentElement.style.backgroundColor = '#4E2A84';
+                        target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">N</span>';
+                      }
+                    }}
+                  />
                 </div>
                 <span className="text-xs mt-1 font-medium text-gray-600">NatWest</span>
               </div>
             </div>
             
             {/* Lloyds Node */}
-            <div className="absolute bottom-1/4 left-1/3 transform -translate-x-1/2 translate-y-1/2 z-10">
+            <div className="absolute top-1/2 right-1/4 transform translate-x-1/2 -translate-y-1/2 z-10">
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white font-bold shadow-lg" 
-                  style={{ backgroundColor: '#006A4D' }}>
-                  <span className="text-lg md:text-xl">L</span>
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
+                  <Image 
+                    src="/banks/lloyds.svg" 
+                    alt="Lloyds" 
+                    width={50} 
+                    height={50}
+                    onError={(e) => {
+                      // Fallback if image not found
+                      const target = e.target as HTMLElement;
+                      if (target.parentElement) {
+                        target.parentElement.style.backgroundColor = '#006A4D';
+                        target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">L</span>';
+                      }
+                    }}
+                  />
                 </div>
                 <span className="text-xs mt-1 font-medium text-gray-600">Lloyds</span>
               </div>
             </div>
             
             {/* HSBC Node */}
-            <div className="absolute bottom-1/3 right-1/5 transform translate-x-1/2 translate-y-1/2 z-10">
+            <div className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 translate-y-1/2 translate-x-[12rem] z-10">
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white font-bold shadow-lg" 
-                  style={{ backgroundColor: '#DB0011' }}>
-                  <span className="text-lg md:text-xl">H</span>
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
+                  <Image 
+                    src="/banks/hsbc.svg" 
+                    alt="HSBC" 
+                    width={50} 
+                    height={50}
+                    onError={(e) => {
+                      // Fallback if image not found
+                      const target = e.target as HTMLElement;
+                      if (target.parentElement) {
+                        target.parentElement.style.backgroundColor = '#DB0011';
+                        target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">H</span>';
+                      }
+                    }}
+                  />
                 </div>
                 <span className="text-xs mt-1 font-medium text-gray-600">HSBC</span>
               </div>
             </div>
 
-            {/* Connection lines */}
+            {/* Connection lines - updated for circular layout */}
             <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.4 }}>
-              {/* Barclays to NatWest */}
+              {/* Connect all banks to Syntropi (center) */}
               <line 
-                x1="25%" y1="25%" 
-                x2="75%" y2="33%" 
+                x1="38%" y1="25%" 
+                x2="50%" y2="50%" 
                 stroke="url(#gradient-line)" 
                 strokeWidth="1.5"
                 strokeDasharray="5,5"
                 className="animate-pulse"
               />
               
-              {/* NatWest to HSBC */}
               <line 
-                x1="75%" y1="33%" 
-                x2="80%" y2="67%" 
+                x1="25%" y1="50%" 
+                x2="50%" y2="50%" 
                 stroke="url(#gradient-line)" 
                 strokeWidth="1.5"
                 strokeDasharray="5,5"
                 className="animate-pulse"
               />
               
-              {/* HSBC to Lloyds */}
               <line 
-                x1="80%" y1="67%" 
-                x2="33%" y2="75%" 
+                x1="75%" y1="50%" 
+                x2="50%" y2="50%" 
                 stroke="url(#gradient-line)" 
                 strokeWidth="1.5"
                 strokeDasharray="5,5"
                 className="animate-pulse"
               />
               
-              {/* Lloyds to Barclays */}
               <line 
-                x1="33%" y1="75%" 
-                x2="25%" y2="25%" 
+                x1="62%" y1="75%" 
+                x2="50%" y2="50%" 
                 stroke="url(#gradient-line)" 
                 strokeWidth="1.5"
                 strokeDasharray="5,5"
                 className="animate-pulse"
               />
               
-              {/* Barclays to HSBC */}
+              {/* Connect banks in a circle */}
               <line 
-                x1="25%" y1="25%" 
-                x2="80%" y2="67%" 
+                x1="38%" y1="25%" 
+                x2="25%" y2="50%" 
                 stroke="url(#gradient-line)" 
                 strokeWidth="1.5"
                 strokeDasharray="5,5"
                 className="animate-pulse"
               />
               
-              {/* NatWest to Lloyds */}
               <line 
-                x1="75%" y1="33%" 
-                x2="33%" y2="75%" 
+                x1="25%" y1="50%" 
+                x2="62%" y2="75%" 
+                stroke="url(#gradient-line)" 
+                strokeWidth="1.5"
+                strokeDasharray="5,5"
+                className="animate-pulse"
+              />
+              
+              <line 
+                x1="62%" y1="75%" 
+                x2="75%" y2="50%" 
+                stroke="url(#gradient-line)" 
+                strokeWidth="1.5"
+                strokeDasharray="5,5"
+                className="animate-pulse"
+              />
+              
+              <line 
+                x1="75%" y1="50%" 
+                x2="38%" y2="25%" 
                 stroke="url(#gradient-line)" 
                 strokeWidth="1.5"
                 strokeDasharray="5,5"
@@ -547,22 +611,21 @@ export default function Home() {
             </svg>
             
             {/* Animated money particles */}
-            <div className="absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-green-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '3s', animationDelay: '0.2s' }}></div>
-            <div className="absolute top-1/3 right-1/4 w-3 h-3 rounded-full bg-blue-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '4s', animationDelay: '1.5s' }}></div>
-            <div className="absolute bottom-1/3 right-1/5 w-3 h-3 rounded-full bg-indigo-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '3.5s', animationDelay: '0.7s' }}></div>
-            <div className="absolute bottom-1/4 left-1/3 w-3 h-3 rounded-full bg-purple-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '5s', animationDelay: '2s' }}></div>
+            <div className="absolute top-[38%] left-1/2 -translate-x-[12rem] -translate-y-1/2 w-3 h-3 rounded-full bg-green-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '3s', animationDelay: '0.2s' }}></div>
+            <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '4s', animationDelay: '1.5s' }}></div>
+            <div className="absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-indigo-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '3.5s', animationDelay: '0.7s' }}></div>
+            <div className="absolute bottom-[38%] left-1/2 translate-x-[12rem] translate-y-1/2 w-3 h-3 rounded-full bg-purple-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '5s', animationDelay: '2s' }}></div>
 
-            {/* Node for Syntropi (central node) */}
+            {/* Node for Syntropi (central node) - updated to show full name */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <div className="flex flex-col items-center">
-                <div className="w-14 h-14 md:w-20 md:h-20 rounded-full shadow-xl flex items-center justify-center text-white font-bold z-30"
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full shadow-xl flex items-center justify-center z-30"
                   style={{ 
                     background: 'linear-gradient(90deg, #6366F1, #8B5CF6)',
                     animation: 'pulse 2s infinite'
                   }}>
-                  <span className="text-xl md:text-2xl">S</span>
+                  <span className="text-white font-bold text-lg md:text-xl tracking-wide">Syntropi</span>
                 </div>
-                <span className="text-sm mt-1 font-medium text-gray-700">Syntropi</span>
               </div>
             </div>
 
@@ -623,165 +686,169 @@ export default function Home() {
           <div className="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></div>
           <span className="text-blue-600 font-medium">Connected</span>
         </div>
-
-        {/* Payment flow demo */}
-        <div className="mt-16 md:mt-20 max-w-sm mx-auto relative">
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-all duration-500">
-            <div className="p-5">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold">Payment Progress</h3>
-                <div className="flex">
-                  {[...Array(totalSteps)].map((_, index) => (
-                    <div
-                      key={index}
-                      className={`w-2 h-2 rounded-full mx-1 ${
-                        index <= paymentStep ? 'bg-indigo-500' : 'bg-gray-200'
-                      }`}
-                    ></div>
-                  ))}
+      </section>
+      
+      {/* Payment Demo Section - Now as its own section */}
+      <section className="py-12 md:py-16 px-4 relative bg-gradient-to-b from-white to-indigo-50/20">
+        <div className="container mx-auto">
+          <div className="max-w-sm mx-auto">
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-all duration-500">
+              <div className="p-5">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-lg font-semibold">Payment Progress</h3>
+                  <div className="flex">
+                    {[...Array(totalSteps)].map((_, index) => (
+                      <div
+                        key={index}
+                        className={`w-2 h-2 rounded-full mx-1 ${
+                          index <= paymentStep ? 'bg-indigo-500' : 'bg-gray-200'
+                        }`}
+                      ></div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              
-              <div className="min-h-[180px]">
-                {/* Step 0: Initiating payment */}
-                {paymentStep === 0 && (
-                  <>
-                    <p className="text-sm font-medium mb-2">Initiating payment</p>
-                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                      <div className="h-full bg-indigo-500 rounded-full animate-pulse" style={{ width: '20%' }}></div>
-                    </div>
-                    <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-                      <div className="flex justify-between mb-3">
-                        <span className="text-sm text-gray-500">Amount</span>
-                        <span className="text-sm font-medium">£49.99</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-500">Merchant</span>
-                        <span className="text-sm font-medium">Example Store</span>
-                      </div>
-                    </div>
-                  </>
-                )}
                 
-                {/* Step 1: Bank Selection */}
-                {paymentStep === 1 && (
-                  <>
-                    <p className="text-sm font-medium mb-3">Select your bank</p>
-                    <div className="grid grid-cols-2 gap-2 mb-3">
-                      {banks.map((bank) => (
-                        <div 
-                          key={bank.id}
-                          className={`p-3 border rounded-lg flex items-center cursor-pointer ${
-                            selectedBank === bank.id 
-                              ? 'border-indigo-500 bg-indigo-50' 
-                              : 'border-gray-200 hover:border-gray-300'
-                          }`}
-                        >
-                          <div 
-                            className="w-8 h-8 rounded flex items-center justify-center text-white font-bold text-xs mr-2"
-                            style={{ backgroundColor: bank.color }}
-                          >
-                            {bank.name.charAt(0)}
-                          </div>
-                          <span className="text-sm">{bank.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                      <div className="h-full bg-indigo-500 rounded-full" style={{ width: '40%' }}></div>
-                    </div>
-                  </>
-                )}
-                
-                {/* Step 2: Authentication with FaceID */}
-                {paymentStep === 2 && (
-                  <>
-                    <p className="text-sm font-medium mb-2">Authenticate with your bank</p>
-                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden mb-4">
-                      <div className="h-full bg-indigo-500 rounded-full" style={{ width: '60%' }}></div>
-                    </div>
-                    
-                    <div className="flex flex-col items-center justify-center p-4">
-                      <div className="w-16 h-16 border-2 border-gray-300 rounded-2xl mb-3 flex items-center justify-center">
-                        <svg className="w-10 h-10 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"></path>
-                        </svg>
+                <div className="min-h-[180px]">
+                  {/* Step 0: Initiating payment */}
+                  {paymentStep === 0 && (
+                    <>
+                      <p className="text-sm font-medium mb-2">Initiating payment</p>
+                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div className="h-full bg-indigo-500 rounded-full animate-pulse" style={{ width: '20%' }}></div>
                       </div>
-                      <span className="text-sm font-medium text-gray-700 mb-1">Face ID</span>
-                      <span className="text-xs text-gray-500">Look at your device</span>
-                      <div className="mt-3 h-4 w-32 bg-gray-200 rounded-full overflow-hidden">
-                        <div className="h-full bg-green-500 animate-pulse" style={{width: '70%'}}></div>
-                      </div>
-                    </div>
-                  </>
-                )}
-                
-                {/* Step 3: Processing payment */}
-                {paymentStep === 3 && (
-                  <>
-                    <p className="text-sm font-medium mb-2">Processing payment</p>
-                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden mb-4">
-                      <div className="h-full bg-indigo-500 rounded-full animate-pulse" style={{ width: '80%' }}></div>
-                    </div>
-                    
-                    <div className="p-4 bg-gray-50 rounded-lg">
-                      <div className="flex justify-between mb-3">
-                        <span className="text-sm text-gray-500">Status</span>
-                        <span className="text-sm font-medium flex items-center">
-                          <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2 animate-pulse"></span>
-                          Processing
-                        </span>
-                      </div>
-                      <div className="flex justify-between mb-3">
-                        <span className="text-sm text-gray-500">Amount</span>
-                        <span className="text-sm font-medium">£49.99</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-500">Bank</span>
-                        <span className="text-sm font-medium flex items-center">
-                          {selectedBank && (
-                            <div 
-                              className="w-4 h-4 rounded-full mr-1"
-                              style={{ backgroundColor: banks.find(b => b.id === selectedBank)?.color || '#000' }}
-                            ></div>
-                          )}
-                          {selectedBank ? banks.find(b => b.id === selectedBank)?.name : 'Selected Bank'}
-                        </span>
-                      </div>
-                    </div>
-                  </>
-                )}
-                
-                {/* Step 4: Payment complete */}
-                {paymentStep === 4 && (
-                  <>
-                    <p className="text-sm font-medium mb-2">Payment complete</p>
-                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden mb-4">
-                      <div className="h-full bg-indigo-500 rounded-full" style={{ width: '100%' }}></div>
-                    </div>
-                    
-                    <div className="flex flex-col items-center justify-center p-4">
-                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-3">
-                        <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                      </div>
-                      <span className="text-lg font-medium text-gray-900 mb-1">Success!</span>
-                      <span className="text-sm text-gray-500 mb-3">Payment of £49.99 complete</span>
-                      
-                      <div className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200">
-                        <div className="flex justify-between mb-2">
-                          <span className="text-xs text-gray-500">Reference</span>
-                          <span className="text-xs font-medium">SYN-{Math.floor(Math.random() * 1000000)}</span>
+                      <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                        <div className="flex justify-between mb-3">
+                          <span className="text-sm text-gray-500">Amount</span>
+                          <span className="text-sm font-medium">£49.99</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-xs text-gray-500">Time</span>
-                          <span className="text-xs font-medium">Just now</span>
+                          <span className="text-sm text-gray-500">Merchant</span>
+                          <span className="text-sm font-medium">Example Store</span>
                         </div>
                       </div>
-                    </div>
-                  </>
-                )}
+                    </>
+                  )}
+                  
+                  {/* Step 1: Bank Selection */}
+                  {paymentStep === 1 && (
+                    <>
+                      <p className="text-sm font-medium mb-3">Select your bank</p>
+                      <div className="grid grid-cols-2 gap-2 mb-3">
+                        {banks.map((bank) => (
+                          <div 
+                            key={bank.id}
+                            className={`p-3 border rounded-lg flex items-center cursor-pointer ${
+                              selectedBank === bank.id 
+                                ? 'border-indigo-500 bg-indigo-50' 
+                                : 'border-gray-200 hover:border-gray-300'
+                            }`}
+                          >
+                            <div 
+                              className="w-8 h-8 rounded flex items-center justify-center text-white font-bold text-xs mr-2"
+                              style={{ backgroundColor: bank.color }}
+                            >
+                              {bank.name.charAt(0)}
+                            </div>
+                            <span className="text-sm">{bank.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div className="h-full bg-indigo-500 rounded-full" style={{ width: '40%' }}></div>
+                      </div>
+                    </>
+                  )}
+                  
+                  {/* Step 2: Authentication with FaceID */}
+                  {paymentStep === 2 && (
+                    <>
+                      <p className="text-sm font-medium mb-2">Authenticate with your bank</p>
+                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden mb-4">
+                        <div className="h-full bg-indigo-500 rounded-full" style={{ width: '60%' }}></div>
+                      </div>
+                      
+                      <div className="flex flex-col items-center justify-center p-4">
+                        <div className="w-16 h-16 border-2 border-gray-300 rounded-2xl mb-3 flex items-center justify-center">
+                          <svg className="w-10 h-10 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"></path>
+                          </svg>
+                        </div>
+                        <span className="text-sm font-medium text-gray-700 mb-1">Face ID</span>
+                        <span className="text-xs text-gray-500">Look at your device</span>
+                        <div className="mt-3 h-4 w-32 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-full bg-green-500 animate-pulse" style={{width: '70%'}}></div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  
+                  {/* Step 3: Processing payment */}
+                  {paymentStep === 3 && (
+                    <>
+                      <p className="text-sm font-medium mb-2">Processing payment</p>
+                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden mb-4">
+                        <div className="h-full bg-indigo-500 rounded-full animate-pulse" style={{ width: '80%' }}></div>
+                      </div>
+                      
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <div className="flex justify-between mb-3">
+                          <span className="text-sm text-gray-500">Status</span>
+                          <span className="text-sm font-medium flex items-center">
+                            <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2 animate-pulse"></span>
+                            Processing
+                          </span>
+                        </div>
+                        <div className="flex justify-between mb-3">
+                          <span className="text-sm text-gray-500">Amount</span>
+                          <span className="text-sm font-medium">£49.99</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-sm text-gray-500">Bank</span>
+                          <span className="text-sm font-medium flex items-center">
+                            {selectedBank && (
+                              <div 
+                                className="w-4 h-4 rounded-full mr-1"
+                                style={{ backgroundColor: banks.find(b => b.id === selectedBank)?.color || '#000' }}
+                              ></div>
+                            )}
+                            {selectedBank ? banks.find(b => b.id === selectedBank)?.name : 'Selected Bank'}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  
+                  {/* Step 4: Payment complete */}
+                  {paymentStep === 4 && (
+                    <>
+                      <p className="text-sm font-medium mb-2">Payment complete</p>
+                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden mb-4">
+                        <div className="h-full bg-indigo-500 rounded-full" style={{ width: '100%' }}></div>
+                      </div>
+                      
+                      <div className="flex flex-col items-center justify-center p-4">
+                        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-3">
+                          <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                        </div>
+                        <span className="text-lg font-medium text-gray-900 mb-1">Success!</span>
+                        <span className="text-sm text-gray-500 mb-3">Payment of £49.99 complete</span>
+                        
+                        <div className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200">
+                          <div className="flex justify-between mb-2">
+                            <span className="text-xs text-gray-500">Reference</span>
+                            <span className="text-xs font-medium">SYN-{Math.floor(Math.random() * 1000000)}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-xs text-gray-500">Time</span>
+                            <span className="text-xs font-medium">Just now</span>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </div>
