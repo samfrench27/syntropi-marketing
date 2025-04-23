@@ -427,227 +427,10 @@ export default function Home() {
 
       {/* Hero Section with animated background */}
       <section className="py-12 md:py-20 px-4 relative overflow-hidden">
-        {/* Financial network background */}
-        <div className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-r from-indigo-50/40 to-blue-50/40">
-          {/* Bank network visualization */}
-          <div className="absolute inset-0 w-full h-full">
-            {/* Banks positioned in a circle around Syntropi */}
-            
-            {/* Barclays Node */}
-            <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -translate-x-[12rem] z-10">
-              <div className="flex flex-col items-center">
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
-                  <Image 
-                    src="/banks/barclays.svg" 
-                    alt="Barclays" 
-                    width={50} 
-                    height={50}
-                    onError={(e) => {
-                      // Fallback if image not found
-                      const target = e.target as HTMLElement;
-                      if (target.parentElement) {
-                        target.parentElement.style.backgroundColor = '#00AEEF';
-                        target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">B</span>';
-                      }
-                    }}
-                  />
-                </div>
-                <span className="text-xs mt-1 font-medium text-gray-600">Barclays</span>
-              </div>
-            </div>
-            
-            {/* NatWest Node */}
-            <div className="absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-10">
-              <div className="flex flex-col items-center">
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
-                  <Image 
-                    src="/banks/natwest.svg" 
-                    alt="NatWest" 
-                    width={50} 
-                    height={50}
-                    onError={(e) => {
-                      // Fallback if image not found
-                      const target = e.target as HTMLElement;
-                      if (target.parentElement) {
-                        target.parentElement.style.backgroundColor = '#4E2A84';
-                        target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">N</span>';
-                      }
-                    }}
-                  />
-                </div>
-                <span className="text-xs mt-1 font-medium text-gray-600">NatWest</span>
-              </div>
-            </div>
-            
-            {/* Lloyds Node */}
-            <div className="absolute top-1/2 right-1/4 transform translate-x-1/2 -translate-y-1/2 z-10">
-              <div className="flex flex-col items-center">
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
-                  <Image 
-                    src="/banks/lloyds.svg" 
-                    alt="Lloyds" 
-                    width={50} 
-                    height={50}
-                    onError={(e) => {
-                      // Fallback if image not found
-                      const target = e.target as HTMLElement;
-                      if (target.parentElement) {
-                        target.parentElement.style.backgroundColor = '#006A4D';
-                        target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">L</span>';
-                      }
-                    }}
-                  />
-                </div>
-                <span className="text-xs mt-1 font-medium text-gray-600">Lloyds</span>
-              </div>
-            </div>
-            
-            {/* HSBC Node */}
-            <div className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 translate-y-1/2 translate-x-[12rem] z-10">
-              <div className="flex flex-col items-center">
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
-                  <Image 
-                    src="/banks/hsbc.svg" 
-                    alt="HSBC" 
-                    width={50} 
-                    height={50}
-                    onError={(e) => {
-                      // Fallback if image not found
-                      const target = e.target as HTMLElement;
-                      if (target.parentElement) {
-                        target.parentElement.style.backgroundColor = '#DB0011';
-                        target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">H</span>';
-                      }
-                    }}
-                  />
-                </div>
-                <span className="text-xs mt-1 font-medium text-gray-600">HSBC</span>
-              </div>
-            </div>
+        {/* Subtle gradient background */}
+        <div className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-r from-indigo-50/40 to-blue-50/40"></div>
 
-            {/* Connection lines - updated for circular layout */}
-            <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.4 }}>
-              {/* Connect all banks to Syntropi (center) */}
-              <line 
-                x1="38%" y1="25%" 
-                x2="50%" y2="50%" 
-                stroke="url(#gradient-line)" 
-                strokeWidth="1.5"
-                strokeDasharray="5,5"
-                className="animate-pulse"
-              />
-              
-              <line 
-                x1="25%" y1="50%" 
-                x2="50%" y2="50%" 
-                stroke="url(#gradient-line)" 
-                strokeWidth="1.5"
-                strokeDasharray="5,5"
-                className="animate-pulse"
-              />
-              
-              <line 
-                x1="75%" y1="50%" 
-                x2="50%" y2="50%" 
-                stroke="url(#gradient-line)" 
-                strokeWidth="1.5"
-                strokeDasharray="5,5"
-                className="animate-pulse"
-              />
-              
-              <line 
-                x1="62%" y1="75%" 
-                x2="50%" y2="50%" 
-                stroke="url(#gradient-line)" 
-                strokeWidth="1.5"
-                strokeDasharray="5,5"
-                className="animate-pulse"
-              />
-              
-              {/* Connect banks in a circle */}
-              <line 
-                x1="38%" y1="25%" 
-                x2="25%" y2="50%" 
-                stroke="url(#gradient-line)" 
-                strokeWidth="1.5"
-                strokeDasharray="5,5"
-                className="animate-pulse"
-              />
-              
-              <line 
-                x1="25%" y1="50%" 
-                x2="62%" y2="75%" 
-                stroke="url(#gradient-line)" 
-                strokeWidth="1.5"
-                strokeDasharray="5,5"
-                className="animate-pulse"
-              />
-              
-              <line 
-                x1="62%" y1="75%" 
-                x2="75%" y2="50%" 
-                stroke="url(#gradient-line)" 
-                strokeWidth="1.5"
-                strokeDasharray="5,5"
-                className="animate-pulse"
-              />
-              
-              <line 
-                x1="75%" y1="50%" 
-                x2="38%" y2="25%" 
-                stroke="url(#gradient-line)" 
-                strokeWidth="1.5"
-                strokeDasharray="5,5"
-                className="animate-pulse"
-              />
-              
-              {/* Gradients */}
-              <defs>
-                <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#6366F1" />
-                  <stop offset="100%" stopColor="#8B5CF6" />
-                </linearGradient>
-              </defs>
-            </svg>
-            
-            {/* Animated money particles */}
-            <div className="absolute top-[38%] left-1/2 -translate-x-[12rem] -translate-y-1/2 w-3 h-3 rounded-full bg-green-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '3s', animationDelay: '0.2s' }}></div>
-            <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '4s', animationDelay: '1.5s' }}></div>
-            <div className="absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-indigo-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '3.5s', animationDelay: '0.7s' }}></div>
-            <div className="absolute bottom-[38%] left-1/2 translate-x-[12rem] translate-y-1/2 w-3 h-3 rounded-full bg-purple-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '5s', animationDelay: '2s' }}></div>
-
-            {/* Node for Syntropi (central node) - updated to show full name */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div className="flex flex-col items-center">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full shadow-xl flex items-center justify-center z-30"
-                  style={{ 
-                    background: 'linear-gradient(90deg, #6366F1, #8B5CF6)',
-                    animation: 'pulse 2s infinite'
-                  }}>
-                  <span className="text-white font-bold text-lg md:text-xl tracking-wide">Syntropi</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Data bits floating around */}
-            <div className="hidden md:block">
-              {[...Array(15)].map((_, i) => (
-                <div 
-                  key={i}
-                  className="absolute w-1 h-1 bg-indigo-500 rounded-full opacity-30"
-                  style={{ 
-                    top: `${Math.random() * 100}%`, 
-                    left: `${Math.random() * 100}%`,
-                    animation: `float ${3 + Math.random() * 7}s linear infinite`,
-                    animationDelay: `${Math.random() * 5}s`
-                  }}
-                ></div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Content remains the same */}
+        {/* Hero content - now comes first */}
         <div className="container mx-auto relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fadeIn">
@@ -663,7 +446,7 @@ export default function Home() {
             <p className="text-xl md:text-2xl text-gray-600 mb-8">
               Unlocking the future of payments
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
               <a 
                 href="#contact" 
                 className="px-6 py-3 text-white rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto text-center"
@@ -677,6 +460,224 @@ export default function Home() {
               >
                 Learn More
               </a>
+            </div>
+          </div>
+          
+          {/* Bank network visualization - moved below the text */}
+          <div className="relative h-[300px] md:h-[400px] max-w-4xl mx-auto mt-8">
+            {/* Banking network - now in a perfect circle */}
+            <div className="absolute inset-0">
+              {/* Central Syntropi node */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full shadow-xl flex items-center justify-center"
+                  style={{ 
+                    background: 'linear-gradient(90deg, #6366F1, #8B5CF6)',
+                    animation: 'pulse 2s infinite'
+                  }}>
+                  <span className="text-white font-bold text-lg md:text-xl tracking-wide">Syntropi</span>
+                </div>
+              </div>
+              
+              {/* Bank nodes in a perfect circle around Syntropi */}
+              
+              {/* Barclays - North position */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-10">
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
+                    <Image 
+                      src="/banks/barclays.svg" 
+                      alt="Barclays" 
+                      width={50} 
+                      height={50}
+                      onError={(e) => {
+                        const target = e.target as HTMLElement;
+                        if (target.parentElement) {
+                          target.parentElement.style.backgroundColor = '#00AEEF';
+                          target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">B</span>';
+                        }
+                      }}
+                    />
+                  </div>
+                  <span className="text-xs mt-1 font-medium text-gray-600">Barclays</span>
+                </div>
+              </div>
+              
+              {/* NatWest - West position */}
+              <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10">
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
+                    <Image 
+                      src="/banks/natwest.svg" 
+                      alt="NatWest" 
+                      width={50} 
+                      height={50}
+                      onError={(e) => {
+                        const target = e.target as HTMLElement;
+                        if (target.parentElement) {
+                          target.parentElement.style.backgroundColor = '#4E2A84';
+                          target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">N</span>';
+                        }
+                      }}
+                    />
+                  </div>
+                  <span className="text-xs mt-1 font-medium text-gray-600">NatWest</span>
+                </div>
+              </div>
+              
+              {/* Lloyds - East position */}
+              <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10">
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
+                    <Image 
+                      src="/banks/lloyds.svg" 
+                      alt="Lloyds" 
+                      width={50} 
+                      height={50}
+                      onError={(e) => {
+                        const target = e.target as HTMLElement;
+                        if (target.parentElement) {
+                          target.parentElement.style.backgroundColor = '#006A4D';
+                          target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">L</span>';
+                        }
+                      }}
+                    />
+                  </div>
+                  <span className="text-xs mt-1 font-medium text-gray-600">Lloyds</span>
+                </div>
+              </div>
+              
+              {/* HSBC - South position */}
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10">
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
+                    <Image 
+                      src="/banks/hsbc.svg" 
+                      alt="HSBC" 
+                      width={50} 
+                      height={50}
+                      onError={(e) => {
+                        const target = e.target as HTMLElement;
+                        if (target.parentElement) {
+                          target.parentElement.style.backgroundColor = '#DB0011';
+                          target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">H</span>';
+                        }
+                      }}
+                    />
+                  </div>
+                  <span className="text-xs mt-1 font-medium text-gray-600">HSBC</span>
+                </div>
+              </div>
+
+              {/* Connection lines - clean straight lines to center */}
+              <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.4 }}>
+                {/* Vertical and horizontal lines to Syntropi (clean, perpendicular) */}
+                <line 
+                  x1="50%" y1="0%" 
+                  x2="50%" y2="50%" 
+                  stroke="url(#gradient-line)" 
+                  strokeWidth="1.5"
+                  strokeDasharray="5,5"
+                  className="animate-pulse"
+                />
+                
+                <line 
+                  x1="0%" y1="50%" 
+                  x2="50%" y2="50%" 
+                  stroke="url(#gradient-line)" 
+                  strokeWidth="1.5"
+                  strokeDasharray="5,5"
+                  className="animate-pulse"
+                />
+                
+                <line 
+                  x1="100%" y1="50%" 
+                  x2="50%" y2="50%" 
+                  stroke="url(#gradient-line)" 
+                  strokeWidth="1.5"
+                  strokeDasharray="5,5"
+                  className="animate-pulse"
+                />
+                
+                <line 
+                  x1="50%" y1="100%" 
+                  x2="50%" y2="50%" 
+                  stroke="url(#gradient-line)" 
+                  strokeWidth="1.5"
+                  strokeDasharray="5,5"
+                  className="animate-pulse"
+                />
+                
+                {/* Circular connecting lines between banks (follows circle perimeter) */}
+                <path
+                  d="M 50,0 A 50,50 0 0,1 100,50"
+                  stroke="url(#gradient-line)" 
+                  strokeWidth="1.5"
+                  strokeDasharray="5,5"
+                  fill="none"
+                  className="animate-pulse"
+                  transform="scale(1)"
+                />
+                
+                <path
+                  d="M 100,50 A 50,50 0 0,1 50,100"
+                  stroke="url(#gradient-line)" 
+                  strokeWidth="1.5"
+                  strokeDasharray="5,5"
+                  fill="none"
+                  className="animate-pulse"
+                  transform="scale(1)"
+                />
+                
+                <path
+                  d="M 50,100 A 50,50 0 0,1 0,50"
+                  stroke="url(#gradient-line)" 
+                  strokeWidth="1.5"
+                  strokeDasharray="5,5"
+                  fill="none"
+                  className="animate-pulse"
+                  transform="scale(1)"
+                />
+                
+                <path
+                  d="M 0,50 A 50,50 0 0,1 50,0"
+                  stroke="url(#gradient-line)" 
+                  strokeWidth="1.5"
+                  strokeDasharray="5,5"
+                  fill="none"
+                  className="animate-pulse"
+                  transform="scale(1)"
+                />
+                
+                {/* Gradients */}
+                <defs>
+                  <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#6366F1" />
+                    <stop offset="100%" stopColor="#8B5CF6" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              
+              {/* Animated money particles */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-green-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '3s', animationDelay: '0.2s' }}></div>
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '4s', animationDelay: '1.5s' }}></div>
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-indigo-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '3.5s', animationDelay: '0.7s' }}></div>
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-purple-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '5s', animationDelay: '2s' }}></div>
+
+              {/* Small data bits floating around */}
+              <div className="hidden md:block">
+                {[...Array(15)].map((_, i) => (
+                  <div 
+                    key={i}
+                    className="absolute w-1 h-1 bg-indigo-500 rounded-full opacity-30"
+                    style={{ 
+                      top: `${Math.random() * 100}%`, 
+                      left: `${Math.random() * 100}%`,
+                      animation: `float ${3 + Math.random() * 7}s linear infinite`,
+                      animationDelay: `${Math.random() * 5}s`
+                    }}
+                  ></div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
