@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Animation styles for payment flow */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+:root {
+  --background: #f8f9fa;
+  --foreground: #1a1a1a;
+  --primary: #4F8CFF;
+  --primary-dark: #3D71D9;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #f8f9fa;
+    --foreground: #1a1a1a;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+}
+
+.card {
+  background: var(--card);
+  color: var(--card-foreground);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Fix for buttons */
+a[href].bg-primary, 
+button.bg-primary {
+  display: inline-block;
+  background-color: var(--primary);
+  color: white;
+  text-align: center;
+}
+
+a[href].bg-primary:hover, 
+button.bg-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Tailwind Text balance utility */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  html, body {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Increase touch target sizes */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve readability on mobile */
+  p, span, li {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed header */
+  }
+}
+
+/* Focus styles for accessibility */
+a:focus, button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Safe area insets for mobile devices with notches */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .has-safe-area {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
 }
