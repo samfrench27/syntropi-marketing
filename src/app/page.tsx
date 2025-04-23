@@ -430,7 +430,7 @@ export default function Home() {
         {/* Subtle gradient background */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-r from-indigo-50/40 to-blue-50/40"></div>
 
-        {/* Hero content - now comes first */}
+        {/* Hero content */}
         <div className="container mx-auto relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fadeIn">
@@ -446,7 +446,7 @@ export default function Home() {
             <p className="text-xl md:text-2xl text-gray-600 mb-8">
               Unlocking the future of payments
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
               <a 
                 href="#contact" 
                 className="px-6 py-3 text-white rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto text-center"
@@ -463,236 +463,8 @@ export default function Home() {
             </div>
           </div>
           
-          {/* Bank network visualization - moved below the text */}
-          <div className="relative h-[300px] md:h-[400px] max-w-4xl mx-auto mt-8">
-            {/* Banking network - now in a perfect circle */}
-            <div className="absolute inset-0">
-              {/* Central Syntropi node */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full shadow-xl flex items-center justify-center"
-                  style={{ 
-                    background: 'linear-gradient(90deg, #6366F1, #8B5CF6)',
-                    animation: 'pulse 2s infinite'
-                  }}>
-                  <span className="text-white font-bold text-lg md:text-xl tracking-wide">Syntropi</span>
-                </div>
-              </div>
-              
-              {/* Bank nodes in a perfect circle around Syntropi */}
-              
-              {/* Barclays - North position */}
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
-                    <Image 
-                      src="/banks/barclays.svg" 
-                      alt="Barclays" 
-                      width={50} 
-                      height={50}
-                      onError={(e) => {
-                        const target = e.target as HTMLElement;
-                        if (target.parentElement) {
-                          target.parentElement.style.backgroundColor = '#00AEEF';
-                          target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">B</span>';
-                        }
-                      }}
-                    />
-                  </div>
-                  <span className="text-xs mt-1 font-medium text-gray-600">Barclays</span>
-                </div>
-              </div>
-              
-              {/* NatWest - West position */}
-              <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10">
-                <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
-                    <Image 
-                      src="/banks/natwest.svg" 
-                      alt="NatWest" 
-                      width={50} 
-                      height={50}
-                      onError={(e) => {
-                        const target = e.target as HTMLElement;
-                        if (target.parentElement) {
-                          target.parentElement.style.backgroundColor = '#4E2A84';
-                          target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">N</span>';
-                        }
-                      }}
-                    />
-                  </div>
-                  <span className="text-xs mt-1 font-medium text-gray-600">NatWest</span>
-                </div>
-              </div>
-              
-              {/* Lloyds - East position */}
-              <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10">
-                <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
-                    <Image 
-                      src="/banks/lloyds.svg" 
-                      alt="Lloyds" 
-                      width={50} 
-                      height={50}
-                      onError={(e) => {
-                        const target = e.target as HTMLElement;
-                        if (target.parentElement) {
-                          target.parentElement.style.backgroundColor = '#006A4D';
-                          target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">L</span>';
-                        }
-                      }}
-                    />
-                  </div>
-                  <span className="text-xs mt-1 font-medium text-gray-600">Lloyds</span>
-                </div>
-              </div>
-              
-              {/* HSBC - South position */}
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white p-1 shadow-lg">
-                    <Image 
-                      src="/banks/hsbc.svg" 
-                      alt="HSBC" 
-                      width={50} 
-                      height={50}
-                      onError={(e) => {
-                        const target = e.target as HTMLElement;
-                        if (target.parentElement) {
-                          target.parentElement.style.backgroundColor = '#DB0011';
-                          target.parentElement.innerHTML = '<span class="text-white font-bold text-lg">H</span>';
-                        }
-                      }}
-                    />
-                  </div>
-                  <span className="text-xs mt-1 font-medium text-gray-600">HSBC</span>
-                </div>
-              </div>
-
-              {/* Connection lines - clean straight lines to center */}
-              <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.4 }}>
-                {/* Vertical and horizontal lines to Syntropi (clean, perpendicular) */}
-                <line 
-                  x1="50%" y1="0%" 
-                  x2="50%" y2="50%" 
-                  stroke="url(#gradient-line)" 
-                  strokeWidth="1.5"
-                  strokeDasharray="5,5"
-                  className="animate-pulse"
-                />
-                
-                <line 
-                  x1="0%" y1="50%" 
-                  x2="50%" y2="50%" 
-                  stroke="url(#gradient-line)" 
-                  strokeWidth="1.5"
-                  strokeDasharray="5,5"
-                  className="animate-pulse"
-                />
-                
-                <line 
-                  x1="100%" y1="50%" 
-                  x2="50%" y2="50%" 
-                  stroke="url(#gradient-line)" 
-                  strokeWidth="1.5"
-                  strokeDasharray="5,5"
-                  className="animate-pulse"
-                />
-                
-                <line 
-                  x1="50%" y1="100%" 
-                  x2="50%" y2="50%" 
-                  stroke="url(#gradient-line)" 
-                  strokeWidth="1.5"
-                  strokeDasharray="5,5"
-                  className="animate-pulse"
-                />
-                
-                {/* Circular connecting lines between banks (follows circle perimeter) */}
-                <path
-                  d="M 50,0 A 50,50 0 0,1 100,50"
-                  stroke="url(#gradient-line)" 
-                  strokeWidth="1.5"
-                  strokeDasharray="5,5"
-                  fill="none"
-                  className="animate-pulse"
-                  transform="scale(1)"
-                />
-                
-                <path
-                  d="M 100,50 A 50,50 0 0,1 50,100"
-                  stroke="url(#gradient-line)" 
-                  strokeWidth="1.5"
-                  strokeDasharray="5,5"
-                  fill="none"
-                  className="animate-pulse"
-                  transform="scale(1)"
-                />
-                
-                <path
-                  d="M 50,100 A 50,50 0 0,1 0,50"
-                  stroke="url(#gradient-line)" 
-                  strokeWidth="1.5"
-                  strokeDasharray="5,5"
-                  fill="none"
-                  className="animate-pulse"
-                  transform="scale(1)"
-                />
-                
-                <path
-                  d="M 0,50 A 50,50 0 0,1 50,0"
-                  stroke="url(#gradient-line)" 
-                  strokeWidth="1.5"
-                  strokeDasharray="5,5"
-                  fill="none"
-                  className="animate-pulse"
-                  transform="scale(1)"
-                />
-                
-                {/* Gradients */}
-                <defs>
-                  <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#6366F1" />
-                    <stop offset="100%" stopColor="#8B5CF6" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              
-              {/* Animated money particles */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-green-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '3s', animationDelay: '0.2s' }}></div>
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '4s', animationDelay: '1.5s' }}></div>
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-indigo-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '3.5s', animationDelay: '0.7s' }}></div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-purple-400 opacity-70 z-20 animate-ping" style={{ animationDuration: '5s', animationDelay: '2s' }}></div>
-
-              {/* Small data bits floating around */}
-              <div className="hidden md:block">
-                {[...Array(15)].map((_, i) => (
-                  <div 
-                    key={i}
-                    className="absolute w-1 h-1 bg-indigo-500 rounded-full opacity-30"
-                    style={{ 
-                      top: `${Math.random() * 100}%`, 
-                      left: `${Math.random() * 100}%`,
-                      animation: `float ${3 + Math.random() * 7}s linear infinite`,
-                      animationDelay: `${Math.random() * 5}s`
-                    }}
-                  ></div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Connected status indicator */}
-        <div className="absolute bottom-6 right-6 sm:right-12 flex items-center bg-white shadow-md rounded-full py-2 px-4 animate-fadeIn">
-          <div className="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-          <span className="text-blue-600 font-medium">Connected</span>
-        </div>
-      </section>
-      
-      {/* Payment Demo Section - Now as its own section */}
-      <section className="py-12 md:py-16 px-4 relative bg-gradient-to-b from-white to-indigo-50/20">
-        <div className="container mx-auto">
-          <div className="max-w-sm mx-auto">
+          {/* Payment Demo moved back into hero */}
+          <div className="max-w-sm mx-auto mt-8">
             <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-all duration-500">
               <div className="p-5">
                 <div className="flex justify-between items-center mb-4">
@@ -854,9 +626,15 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Features section */}
+        {/* Connected status indicator */}
+        <div className="absolute bottom-6 right-6 sm:right-12 flex items-center bg-white shadow-md rounded-full py-2 px-4 animate-fadeIn">
+          <div className="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+          <span className="text-blue-600 font-medium">Connected</span>
+        </div>
+      </section>
+      
+      {/* Features section - moved up to replace the removed payment demo section */}
       <section id="features" className="py-16 md:py-24 px-4 bg-gray-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
